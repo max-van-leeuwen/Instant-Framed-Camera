@@ -1,7 +1,13 @@
 # Instant Framed Camera
-The code used for both the camera and the frame in my 'Instant Framed Camera' project.
+The code used for the camera and the frame in my 'Instant Framed Camera' project.
+
 [More on this project here!](https://maxvanleeuwen.com/project/instant-framed-camera/)
-The scripts auto-start using a cron job, and [some fast-bootup tricks were applied](http://himeshp.blogspot.com/2018/08/fast-boot-with-raspberry-pi.html).
+
+The scripts auto-starts using a cron job, and [some fast-bootup tricks were applied](http://himeshp.blogspot.com/2018/08/fast-boot-with-raspberry-pi.html).
+
+<br/><br/>
+
+<img src="https://maxvanleeuwen.com/wp-content/uploads/both.jpg"  width="300">
 
 <br/><br/><br/>
 
