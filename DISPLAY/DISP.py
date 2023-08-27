@@ -117,8 +117,7 @@ def checkHost():
         if newFileDate is not None:
             # date difference check before downloading
             curFileDate = float(config['imageDate'])
-            
-            if(newFileDate > curFileDate): # if file is newer
+            if(newFileDate >= curFileDate): # if file is newer
                 print('ftp file is newer')
 
                 downloadSucces = False
@@ -159,12 +158,16 @@ def checkHost():
                     # update config
                     config['imageDate'] = newFileDate
                     initConfig(True)
+            
+            else:
+                print('ftp file is older! not updating frame')
 
         print('logging out ftp')
         ftp.close()
 
     except:
         # connection might not be stable, ignore
+        print('failed, ignoring (might be no wifi)')
         pass
 
     # loop hosting check at interval, check for button press inbetween
