@@ -39,7 +39,7 @@ Camera
 - numpy
 
 Display
-- The Waveshare libs that come with the e-paper display
+- The Waveshare libs that come with the e-paper display (place the 'lib' folder next to the DISP.py script)
 - RPi.GPIO
 - spidev
 - Jetson.GPIO
