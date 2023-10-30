@@ -60,7 +60,7 @@ def initCam():
     cam = Picamera2()
     cam.start()
     # cam.set_controls({"AfMode": controls.AfModeEnum.Auto, "AfSpeed": controls.AfSpeedEnum.Fast})
-    cam.set_controls({"AfMode": controls.AfModeEnum.Manual, "LensPosition": 0.4}) # set focus locked to 2.5m away (dioptres) - better for battery, and with glass disk in front the AF seems to be having some difficulties
+    cam.set_controls({"AfMode": controls.AfModeEnum.Manual, "LensPosition": 0.3}) # 3.33m away (dioptres)
 
 
 
@@ -222,9 +222,14 @@ def uploadImageToHosting(filepath):
     except Exception as e1: # maybe something is wrong with the connection, try once more
         if(keepTryingConnectionForever):
             print(f'error while uploading to hosting, trying forever. error: {e1}')
-            time.sleep(.6) # arbitrary wait time
 
-            return uploadImageToHosting(filepath)
+            while True: # keep trying until it works
+                time.sleep(1.5) # arbitrary wait time
+                try:
+                    uploading(filepath)
+                    return True
+                except Exception as e3:
+                    print(f'error while uploading to hosting, trying forever. error: {e3}')
             
         else:
             print(f'error while uploading to hosting, trying again. error: {e1}')
@@ -383,5 +388,5 @@ def start():
     startButton(buttonPressed)
 
 enableLight(True)
-time.sleep(1) # arbitrary wait time to initialize (camera module seemed to bug out sometimes without this)
+time.sleep(1) # arbitrary wait time to initialize (camera module seemed to have a some issues without this)
 start()
